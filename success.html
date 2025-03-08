@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    animation: typing 4s steps(20, end) forwards;
+}
+
+/* Remove this if not needed */
+/* @keyframes blink {
+    50% { border-color: transparent; }
+} */
+
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 21ch; }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        /* Image Styling */
+        .image-container {
+            margin-top: 20px;
+        }
+
+        img {
+            width: 300px;
+            height: 250px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            animation: float 4s ease-in-out infinite alternate;
+        }
+
+        /* ✨ Sparkling Stars ✨ */
+        .star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { transform: scale(0.5); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Firework Particles */
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: explode 1.5s ease-out infinite;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(0); opacity: 1; }
+            50% { transform: scale(3); opacity: 0.8; }
+            100% { transform: scale(5); opacity: 0; }
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Birthday Text -->
+    <div class="container">Happy Birthday! 🎂🎉</div>
+
+    <!-- Cute Image -->
+    <div class="image-container">
+        <img src="gif.gif" alt="Cute Bear Holding Cake">
+    </div>
+
+    <!-- Fireworks & Stars Script -->
+    <script>
+        function createStar() {
+            const star = document.createElement("div");
+            star.classList.add("star");
+
+            // Random position
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.top = Math.random() * 100 + "vh";
+
+            // Random size
+            let size = Math.random() * 5 + 2 + "px";
+            star.style.width = size;
+            star.style.height = size;
+
+            document.body.appendChild(star);
+
+            setTimeout(() => star.remove(), 2000);
+        }
+
+        function createFirework() {
+            const firework = document.createElement("div");
+            firework.classList.add("firework");
+
+            // Random position
+            firework.style.left = Math.random() * 100 + "vw";
+            firework.style.top = Math.random() * 100 + "vh";
+
+            // Random color
+            firework.style.backgroundColor = ["red", "yellow", "blue", "green", "purple"][Math.floor(Math.random() * 5)];
+
+            document.body.appendChild(firework);
+
+            setTimeout(() => firework.remove(), 1500);
+        }
+
+        // Create stars and fireworks at intervals
+        setInterval(createStar, 300);
+        setInterval(createFirework, 800);
+    </script>
+
+</body>
+</html>
